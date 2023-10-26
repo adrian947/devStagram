@@ -1,8 +1,8 @@
 {
-    "indentSize": 2,
-    "wrapAttributes": "aligned-multiple",
-    "wrapLineLength": 10,
-    "endWithNewLine": false,
+    "indentSize": 4,
+    "wrapAttributes": "auto",
+    "wrapLineLength": 120,
+    "endWithNewLine": true,
     "noMultipleEmptyLines": false,
     "useTabs": false,
     "sortTailwindcssClasses": true,
