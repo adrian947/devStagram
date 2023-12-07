@@ -39,7 +39,7 @@ class RegisterController extends Controller
 
         // redirect
 
-        return redirect()->route('posts');
+        return redirect()->route('posts', auth()->user()->username);
 
     }
 }
