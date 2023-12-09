@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\File as FacadesFile;
 class PostController extends Controller
 {
   public function __construct()
@@ -58,6 +58,12 @@ class PostController extends Controller
     $this->authorize('delete', $post);
     $post->delete();
 
-    return redirect()->route('post.index', auth()->user()->username);
+    $image_path = public_path('uploads/' . $post->image);
+
+    if(FacadesFile::exists($image_path)){
+      unlink($image_path);
+    }
+
+    return redirect()->route('posts', auth()->user()->username);
   }
 }
