@@ -8,7 +8,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\imageController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\ProfileController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +54,9 @@ Route::post('/imagenes', [imageController::class, 'store'])->name('image.create'
 
 Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
 Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
+
+//profile
+Route::get('/{user:username}/edit-profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::post('{user:username}/edit-profile', [ProfileController::class, 'store'])->name('profile.store');
+
+
