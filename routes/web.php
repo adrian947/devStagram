@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\imageController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
@@ -25,6 +27,7 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/home', HomeController::class)->name('home');
 Route::get('/login', function () {
     return view('auth.login');
 });
@@ -49,9 +52,7 @@ Route::post('/{user:username}/posts/{post}', [CommentController::class, 'store']
 // image
 Route::post('/imagenes', [imageController::class, 'store'])->name('image.create');
 
-
 // Likes
-
 Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
 Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
 
@@ -60,3 +61,6 @@ Route::get('/{user:username}/edit-profile', [ProfileController::class, 'index'])
 Route::post('{user:username}/edit-profile', [ProfileController::class, 'store'])->name('profile.store');
 
 
+//Followers
+Route::post('{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
+Route::delete('{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');

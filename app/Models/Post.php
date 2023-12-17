@@ -18,7 +18,7 @@ class Post extends Model
 
     // un usuario puede tener muchos post
     public function user(){
-        return $this->belongsTo(User::class)->select(['name', 'userName']);
+        return $this->belongsTo(User::class)->select(['id', 'name', 'userName']);
     }
     
     // un post puede tener muchos comentarios

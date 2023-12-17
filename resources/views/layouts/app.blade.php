@@ -5,23 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-    @vite('resources/css/app.css')   
-    @vite('resources/js/app.js')   
+    @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
 </head>
 
 <body class="bg-gray-100">
     <header class="border-b bg-white p-5 shadow">
         <div class="container mx-auto flex items-center justify-between">
-
-            <h1 class="text-3xl font-black">DevStagram</h1>
-
-
+            <a href="/home">
+                <h1 class="text-3xl font-black">DevStagram</h1>
+            </a>
             @auth
                 <nav class="flex items-center gap-3">
-                    <a
-                    href="{{route('posts.create')}}"
-                    class="flex cursor-pointer items-center gap-2 rounded border bg-white p-2 text-sm font-bold uppercase text-gray-600"
-                    >
+                    <a href="{{ route('posts.create') }}"
+                        class="flex cursor-pointer items-center gap-2 rounded border bg-white p-2 text-sm font-bold uppercase text-gray-600">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -29,7 +26,7 @@
                         </svg>
 
                         Crear</a>
-                    <a class="font-bold text-gray-600" href="{{route('posts', auth()->user()->username)}}">HI: <span
+                    <a class="font-bold text-gray-600" href="{{ route('posts', auth()->user()->username) }}">HI: <span
                             class="font-normal">{{ auth()->user()->username }}</span></a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
